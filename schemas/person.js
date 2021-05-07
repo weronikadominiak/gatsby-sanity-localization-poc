@@ -6,6 +6,20 @@ export default {
   type: 'document',
   icon: UserIcon,
   fields: [
+    // should be defined separetly as it's reusable
+    {
+      title: 'Market',
+      name: 'market',
+      type: 'string',
+      options: {
+        list: [
+          {title: 'English', value: 'en'},
+          {title: 'Spanish', value: 'es'},
+          {title: 'Japanese', value: 'jp'}
+        ], // <-- predefined values
+        layout: 'radio' // <-- defaults to 'dropdown'
+      }
+    },
     {
       name: 'name',
       title: 'Name',
