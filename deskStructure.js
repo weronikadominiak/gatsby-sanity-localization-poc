@@ -42,11 +42,13 @@ export default () =>
             .title("Spanish")
             .items([
               // Peole in given market
-              S.listItem().title("Only spanish people").child(
-                S.documentTypeList("person")
-                  .title(`Only spanish people`) // todo how to make category name dynamic?
-                  .filter('_type == "person" && market =="es"')
-              ),
+              S.listItem()
+                .title("Only spanish people")
+                .child(
+                  S.documentTypeList("person")
+                    .title(`Only spanish people`)
+                    .filter('_type == "person" && market =="es"')
+                ),
             ])
         ),
       S.listItem()
