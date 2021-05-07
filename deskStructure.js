@@ -1,4 +1,5 @@
 import S from "@sanity/desk-tool/structure-builder";
+import React from "react";
 
 export default () =>
   S.list()
@@ -11,6 +12,7 @@ export default () =>
         .child(S.documentTypeList("person").title("People")),
       S.listItem()
         .title("English")
+        .icon(() => <span>🇬🇧</span>)
         .child(
           S.list()
             .title("Site settings")
@@ -18,19 +20,18 @@ export default () =>
               // Singleton
               S.listItem()
                 .title("Singleton")
+                .icon(() => <span>⚙️</span>)
                 .child(
-                  S.editor()
-                    .id("person")
-                    .schemaType("person")
-                    .documentId("person")
+                  S.editor().id("movie").schemaType("movie").documentId("movie")
                 ),
 
               // Peole in given market
               S.listItem()
-                .title("Only english people")
+                .title("English people")
+                .icon(() => <span>🧍</span>)
                 .child(
                   S.documentTypeList("person")
-                    .title("Only english people")
+                    .title("English people")
                     .filter('_type == "person" && market =="en"')
                 ),
             ])
@@ -46,7 +47,7 @@ export default () =>
                 .title("Only spanish people")
                 .child(
                   S.documentTypeList("person")
-                    .title(`Only spanish people`)
+                    .title(`Spanish people`)
                     .filter('_type == "person" && market =="es"')
                 ),
             ])
@@ -59,7 +60,7 @@ export default () =>
             .items([
               // Peole in given market
               S.listItem()
-                .title("Only japanese people")
+                .title("Japanese people")
                 .child(
                   S.documentTypeList("person")
                     .title(`Only japanese people`)

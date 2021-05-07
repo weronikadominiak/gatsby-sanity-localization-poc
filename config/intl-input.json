@@ -1,0 +1,8 @@
+{
+    "idStructure": "subpath",
+    "referenceBehavior": "hard",
+    "languages": [
+      { "name": "base", "title": "Base" },
+      { "name": "en_gb", "title": "English (UK)" }
+    ]
+}
