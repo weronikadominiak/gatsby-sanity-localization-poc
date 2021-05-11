@@ -23,21 +23,35 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     data.forEach(element => {
       // Create page for given market
       if (element.slug) {
+        const path = `${element.market || "en"}/${element.slug.current}`
+
         createPage({
-          path: `${element.market || "en"}/${element.slug.current}`,
+          path,
           component: require.resolve(templatePath),
+          context: {
+            slug: element.slug.current,
+            market: element.market,
+          },
         })
 
-        console.log(`${element.market || "en"}/${element.slug.current}`)
+        console.log(path)
       }
+
+      // add generating uk page for every English page with en-uk, check if they have custom slug
 
       // Check if page should have English UK version
       if (element.slugUK) {
+        const path = `en-uk/${element.slug.current}`
         createPage({
-          path: `en-uk/${element.slug.current}`,
+          path,
           component: require.resolve(templatePath),
+          context: {
+            slug: element.slug.current,
+            market: element.market,
+            uk: true,
+          },
         })
-        console.log(`en-uk/${element.slug.current}`)
+        console.log(path)
       }
     })
 
